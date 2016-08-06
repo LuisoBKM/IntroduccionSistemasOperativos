@@ -1,0 +1,39 @@
+#!/bin/bash
+
+num_aleatorio=$(date +%N | cut -c2)
+a=0
+while true
+do
+	echo ¿El número es el $num_aleatorio?
+	read x
+	case $x in
+	menor)
+		if [ $a -ne 2 ]
+		then 
+		let num_aleatorio=$(($num_aleatorio-1))
+		a=1
+		else
+			echo TRAMPOSO
+			exit 1
+		fi
+	;;
+	mayor)
+		if [ $a -ne 1 ]
+		then 
+		let num_aleatorio=$(($num_aleatorio+1))
+		a=2
+		else
+			echo TRAMPOSO
+			exit 1
+		fi
+
+	;;
+	correcto)
+		echo El número era $num_aleatorio
+		break
+	;;
+	exit)
+		break
+	;;
+	esac
+done
