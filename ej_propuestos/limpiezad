@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# limpiezad: Se encarga de comprobar el espacio disponible en bloques de 1k
+# y compararlo con la variable de entorno MINLIBRE. En función de esta 
+# comparación va borrando archivos del directorios ~/borrados siguiendo 
+# una política FIFO. 
+
+#echo "Ejecutando limpiezad"
+
+while true
+do
+	if [ $MINLIBRE -le 11234920 ]
+	then
+		aborrar=$(cat ~/listaborrados.txt | head -1)
+		copia=$(cat ~/listaborrados.txt | grep $aborrar -v)
+		echo "Archivo a borrar: $aborrar"
+		rm `basename $aborrar`		
+		echo "$copia" > ~/listaborrados.txt
+	fi
+	sleep 10
+done

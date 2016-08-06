@@ -1,0 +1,25 @@
+#!/bin/bash	
+# diffd [-i] directorio1 [directorio2]
+# Función: debe mirar todos los nombres de fichero contenidos en el directorio1 y en el directorio2
+# (a excepción de los nombres de directorios) y mostrar las diferencias, es decir, mostrar el nombre de
+# aquellos ficheros que aparecen en uno de los directorios pero no en el otro, indicando para cada uno
+# de ellos el directorio en el que se encuentra.
+#
+# Parámetros: directorio1 y directorio2: directorios entre los que se hace la comparación. Si se omite
+# directorio2 (que es opcional) se entenderá que queremos comparar directorio1 con el directorio en el
+# que nos encontremos al ejecutar diffd.
+#
+# Opciones: -i: invierte el funcionamiento de diffd haciendo que muestre los nombres de aquellos
+# ficheros que se encuentran en los dos directorios (es obvio que en este caso no hay que indicar el
+# directorio en el que aparece el fichero, pues aparece en ambos).
+
+if [ $# -eq 3 ]
+then
+	find $2 -maxdepth 1 -type f -printf "%f\n" | while read fich; do find $3 -maxdepth 1 -type f -printf "%f\n" | grep -q $fich; if [ $? -ne 1 ]; then echo $fich;fi;done;
+
+	
+else
+	find $1 -maxdepth 1 -type f -printf "%f\n" | while read fich; do find $2 -maxdepth 1 -type f -printf "%f\n" | grep -q $fich; if [ $? -ne 0 ]; then echo $fich;fi;done;
+
+	find $2 -maxdepth 1 -type f -printf "%f\n" | while read fich; do find $1 -maxdepth 1 -type f -printf "%f\n" | grep -q $fich; if [ $? -ne 0 ]; then echo $fich;fi;done;
+fi

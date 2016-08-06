@@ -1,0 +1,85 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]
+then
+	echo "" > $1
+	fich=$1
+else
+	echo "" > agenda.dat
+	fich=agenda.dat
+fi
+
+while [ true ]
+do
+	echo -n "AGENDA (Introduzca opción. ’h’ para ayuda) >>"
+	read x
+
+	case $x in
+	h)
+		echo h: mostrará ayuda de todas las opciones.
+		echo q: para salir de la agenda.
+		echo l: listará el fichero de la agenda en columnas:
+		echo on: ordenará la agenda por nombre ascendentemente. 
+		echo "os: ordenará la agenda por saldo descendentemente"
+		echo a: añadirá una línea en el listin.
+		echo "b: borrará una línea."
+	;;
+	q)
+		echo Saliendo....
+		exit 1
+	;;
+	l)
+		echo
+		echo --------------------------------------------------- AGENDA -------------------------------------------------------------
+		echo "Nombre			Apellidos				Localidad		Saldo			Teléfono"
+		echo "------------------------------------------------------------------------------------------------------------------------"
+		cat $fich
+		echo
+	;;
+	on)
+		sort $fich > ej1
+		cp ej1 $fich
+	;;
+	a)
+		echo Introduzca el nombre de la persona
+		read x
+		echo Introduzca los dos apellidos de la persona
+		read w
+ 		cat $fich | tr -s " " | cut -d " " -f1,2,3 | grep -i $x
+		if [ $? -eq 0 ]
+		then
+			echo No puede repetir el nombre.
+	 		
+		else
+			
+			echo "Introduzca su localidad "
+			read y
+			echo "Introduzca su saldo"
+			read z
+			echo "Introduzca su telefono"
+			read a
+			echo "Ya existe una nueva entrada en su agenda"
+			echo "$x:			$w:				$y:			$z:			$a:" >> $fich
+		fi
+	;;
+	os)
+	 sort -t ":" -r -k4 $fich > ej2
+	 cp ej2 $fich
+	;;
+	b)
+		echo Introduce el nombre exacto que desea borrar
+		
+		read a
+		cat $fich | while read fichero; do c=$(cat $fichero | cut -d ":" -f1); echo $c; if [ $c = $a ]; then break; else contador=`expr $contador + 1`;fi;done;
+		echo $contador
+	;;
+	*)
+		echo holaaaa
+	esac
+
+done
+
+
+
+
+

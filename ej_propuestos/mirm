@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Ejercicio 13: mirm 
+# Hacer un guión shell llamado mirm que mueva al directorio ~/.borrados los ficheros (nunca direc-
+# torios) que se le indiquen como parámetros. Este guión shell viene acompañado por otro guión llamado
+# limpiezad que se debe ejecutar en segundo plano y que cada 10 segundos compruebe si tiene que borrar
+# ficheros del directorio ~/.borrados en función del espacio ocupado en disco. Ambos guiones shell
+# hacen uso de la variable de entorno MINLIBRE que indica el mínimo espacio en disco que debe quedar.
+# De tal manera que una condición que deben cumplir ambos guiones es que, tras su ejecución, el espacio
+# libre en disco (en bloques de 1K) debe ser igual o superior a MINLIBRE. En el caso de que, para cumplir
+# dicha condición, haya que borrar ficheros de ~/.borrados, se seguirá una política FIFO.
+# Nota: basta con que ambos guiones funcionen para la partición en la que se encuentra el directorio personal
+# del usuario.
+# Además, ambos guiones deben hacer uso del fichero ~/.listaborrados que guardará, sólo para cada
+# fichero presente en ~/.borrados, su ruta de acceso original.
+# Mejora: debe permitirse el borrado de ficheros con igual nombre.
+
+if [ $# -eq 0 ]
+then
+	echo "Sintaxis: ./mirm fichero1 [fichero2] [fichero3] .. [ficheroN]"
+	exit 1
+fi
+
+ficheros=$*
+
+export MINLIBRE=$(df /dev/sda6 | tr -s " " | cut -f4 -d " " | sort | head -1)
+
+. limpiezad &
+
+for i in $ficheros
+do
+	if [ -f $i ]
+	then
+		nombre=$(basename $i)
+		echo "$PWD/$i" >> ~/listaborrados.txt
+		mv $i ~/borrados/"$nombre"
+	else
+		echo "$i no es un fichero regular o no se encuentra"
+	fi
+done

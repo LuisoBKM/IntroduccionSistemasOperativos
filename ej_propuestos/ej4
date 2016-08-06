@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+while true
+do
+echo "Introduzaca el número para calcular su doble"
+read x
+if echo $x | grep -x -q "[0-9]\+"					# Comprobamos si hemos introducido un número
+	then
+		let result=$x*2
+		echo El doble de $x es $result
+		echo "¿Desea calcular otro doble?(s/n)"
+		read y
+		if [ $y == "n" ]
+		then 
+			break
+		fi
+else 
+	echo Debe introducir un número
+	echo
+fi
+done

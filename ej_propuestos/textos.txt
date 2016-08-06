@@ -1,0 +1,4 @@
+ejecutables.txt
+ejecutable.txt
+textos.txt
+text.txt

@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Ejercicio 12: estadopaquetes
+# En RedHat se utiliza el formato de paquetes RPM que facilita la
+# administración de los mismos: instalación, eliminación, verificación
+# de integridad, dependencias, etc. El programa utilizado para llevar
+# a cabo dicha administración se llama rpm. Cree un guión shell llamado
+# estadopaquetes que reciba como parámetro un directorio y que, para
+# cada uno de los paquetes que existan en ese directorio (si existen),
+# indique su estado que puede ser uno de los 4 siguientes;
+#	> No instalado
+#	> Instalado
+#	> A actualizar (cuando la versión instalada del paquete es más antigua
+#	  que la que tiene el paquete)
+#	> ¿A borrar? (cuando la versión instalada del paquete es más reciente
+#	  que la que tiene el paquete)
+#
+# El directorio pasado como parámetro es opcional y, si no se indica, se
+# asumirá el directorio actual. Supondremos que el formato del nombre del
+# fichero del paquete es:
+#	nombrepaquete-versión-revisión.arquitectura.rpm
+#
+# El nombre del paquete puede tener guiones por lo que habrá que controlar
+# esto. Un ejemplo de paque te es man-pages-es-0.7a-1.noarch.rpm
+# No tendremos en cuenta los paquetes con código fuente, es decir, aquellos
+# de extensión src.rpm
+
+if [ $# -eq 0 ]
+then
+	directorio="$PWD"
+elif [ $# -gt 1 ]
+then
+	echo "Sintaxis: ./estadopaquetes [directorio]"
+	exit 1
+else
+	directorio="$1"
+fi
+
+numpaquetes=$(find $directorio -name "*.rpm" -printf "%f\n" | wc -l)
+
+echo "En el directorio $directorio, hay $numpaquetes"
+
+if [ $numpaquetes -ne 0 ]
+then
+	paquetes=$(find $directorio -name "*.rpm" -printf "%f, ")
+	echo "Paquetes en $directorio: "
+	echo "$paquetes"
+	i=0
+	while [ $i -lt $numpaquetes ]
+	do
+		find -name "*.rpm" -printf "%f\n" | while read paquete; do Array_paquetes[$i]=$paquete; let i=$i+1; instalado=$(rpm -q "${Array_paquetes[$i]}"); echo "$instalado"; done;
+		
+	done
+
+else
+	echo "No se han encontrado paquetes en el directorio $directorio"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

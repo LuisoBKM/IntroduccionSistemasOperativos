@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+usuario=$(whoami|uniq)
+usuarios=$(who|tr -s " "|cut -f1 -d " "|uniq)
+procesos=$(ps | tr -s " " | cut -f5 -d " "|sort|uniq)
+echo Hola usuario $usuario, está usted conectado en el terminal ttt
+echo
+./ej3
+echo
+echo Usuarios conectados:
+echo
+echo $usuarios
+echo Lista de procesos:
+echo
+echo $procesos
+
+

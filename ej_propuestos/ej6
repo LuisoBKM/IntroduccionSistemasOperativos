@@ -1,0 +1,35 @@
+#!/bin/bash
+echo -n "" > ejecutables.txt
+echo -n "" > textos.txt
+echo -n "" > directorios.txt
+for fich in *
+do
+	if file $fich | grep -q "executable"
+	then
+		echo $fich >> ejecutables.txt
+	fi
+	if file $fich | grep -q " ASCII text"
+	then
+		echo $fich >> textos.txt
+	fi
+	if file $fich | grep -q "directory"
+	then
+		echo $fich >> directorios.txt
+	fi
+done
+
+let eje=$(cat ejecutables.txt | wc -l)
+let text=$(cat textos.txt | wc -l)
+let dir=$(cat directorios.txt | wc -l)
+
+echo La clasificacion del directorio $PWD es:
+echo -n "Hay $eje ficheros ejecutables: "
+cat ejecutables.txt | while read linea; do echo -n "$linea ";done
+echo
+echo -n "Hay $text ficheros de texto: "
+cat textos.txt | while read linea; do echo -n "$linea ";done
+echo
+echo -n "Hay $dir directorios: "
+cat directorios.txt | while read linea; do echo -n "$linea ";done
+echo
+
