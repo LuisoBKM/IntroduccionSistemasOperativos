@@ -1,0 +1,53 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+	echo "La sintaxis es: mediana file [file2 ...]"
+fi
+medianas=""
+ficheros=""
+output=""
+while [ "$1" != "" ]
+do
+	if [ -f $1 ]
+	then
+		if [ "$ficheros" == "" ]
+		then
+			ficheros="$1"
+			output="Fichero:Mediana\n$1"
+		else
+			ficheros="$ficheros:$1"
+			output="$output$1"
+		fi
+		numlineas=`cat $1 | sort -n | wc -l`
+		if [ $((numlineas % 2)) -eq 0 ]
+		then
+			#pares
+			primero=`cat $1 | sort -n | tr -s '\n' ' ' | cut -f $((numlineas / 2)) -d ' '`
+			segundo=`cat $1 | sort -n | tr -s '\n' ' ' | cut -f $(((numlineas / 2)+1)) -d ' '`
+			mediana=$((($primero + $segundo) / 2))
+			if [ "$medianas" == "" ]
+			then
+				medianas="$mediana"
+			else
+				medianas="$medianas:$mediana"
+			fi
+			output="$output:$mediana\n"
+		else
+			#impares
+			mediana=`cat $1 | sort -n | tr -s '\n' ' ' | cut -f $(((numlineas / 2) + 1)) -d ' '`
+			if [ "$medianas" == "" ]
+			then
+				medianas="$mediana"
+			else
+				medianas="$medianas:$mediana"
+			fi
+			output="$output:$mediana\n"
+		fi
+	else
+		echo El fichero $1 no existe
+	fi
+	shift
+done
+
+echo -e $output | column -t -s ":"

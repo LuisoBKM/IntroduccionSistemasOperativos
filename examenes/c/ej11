@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if echo $1 | grep -x -q "[0-9]\+" 
+then
+	tiempo=$1
+	shift
+else
+	tiempo=60
+fi
+while test "$1" != ""
+do
+	$1 &
+	a=$!
+	while true
+	do
+		ps
+		sleep $tiempo
+		ps | tr -s " " | cut -f2 -d " " | grep -q $a
+		if [ $? -eq 1 ]
+		then
+			break
+		fi
+	done
+	ps
+	shift
+done
