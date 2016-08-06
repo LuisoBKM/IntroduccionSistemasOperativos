@@ -1,0 +1,5 @@
+#!/bin/bash
+#Guión num, que muestra su identificador de proceso
+
+echo "num PID = $$"
+

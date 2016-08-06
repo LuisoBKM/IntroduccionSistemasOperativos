@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Ejemplo menú usando select
+select opcion in "Ver directorio actual" \
+    "Copiar ficheros" \
+    "Editar ficheros" \
+    "Imprimir fichero" \
+    "Salir del menú"
+do
+    case $REPLY in
+    1)    ls -l|more; read z
+          ;;
+    2)    echo "Introduzca [desde] [hasta]"
+          read x y
+          cp $x $y
+          read x
+          ;;
+    3)    echo "¿Nombre de fichero a editar?"
+          read x;
+          vi $x
+          ;;
+    4)    echo "¿Nombre de fichero a imprimir?"
+          read x
+          lpr $x
+          ;;
+    5)    clear; break
+          ;;
+    esac
+done
+

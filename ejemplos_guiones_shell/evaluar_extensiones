@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Programa que evalúa la extensión de un fichero. Si ésta se corresponde
+# con ``txt'', copia  el fichero al directorio ~/copias. Si es otra
+# la extensión o no hace nada o presenta un mensaje.
+
+case $1 in
+*.txt)
+       cp $1 ~/copias/$1
+       ;;
+*.doc | *.bak)
+       # Tan sólo como ejemplo de otras extensiones
+       ;;
+*)
+       echo "$1 extensión desconocida"
+       ;;
+esac
+

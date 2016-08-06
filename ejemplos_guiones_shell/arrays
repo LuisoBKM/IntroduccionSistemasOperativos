@@ -1,0 +1,9 @@
+#!/bin/bash
+ary=(1 2 va3 )   #Crea e inicializa un array de 3 elementos
+ary[3]=v4               #Asigna un valor al elemento 4
+
+
+echo Los elementos del array son ${ary[*]} # consultar todos los elementos
+echo El elemento nº 3 es ${ary[2]}        # Para acceder al elemento 3
+echo Los elementos son ${ary[@]}  # Para consultar todos los elementos
+

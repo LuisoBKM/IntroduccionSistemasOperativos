@@ -1,0 +1,6 @@
+#!/bin/bash
+
+variable=45
+
+echo El valor de la variable es $variable
+

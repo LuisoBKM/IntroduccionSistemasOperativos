@@ -1,0 +1,11 @@
+#!/bin/bash
+if test -f "$1"       # ¿ es un fichero ?
+then
+     more $1
+elif test -d "$1"     # ¿ es un directorio ?
+then
+     (cd $1;ls -l|more)
+else                  # no es ni fichero ni directorio
+     echo "$1 no es fichero ni directorio"
+fi
+

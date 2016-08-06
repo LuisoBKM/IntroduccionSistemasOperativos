@@ -1,0 +1,9 @@
+#!/bin/bash
+# Muestra todos los parámetros
+
+while [ ! -z $1 ]
+do
+     echo Parámetro: $1
+     shift
+done
+

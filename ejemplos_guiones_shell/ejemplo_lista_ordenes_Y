@@ -1,0 +1,3 @@
+#!/bin/bash
+test -e prac.c && echo El fichero sí existe
+

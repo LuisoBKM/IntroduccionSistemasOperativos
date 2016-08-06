@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# En este siguiente caso estamos interesados en mostrar un listado
+# largo del directorio actual, en el que todos los números son
+# sustituidos por el carácter X:
+
+ls -l | tr "0-9" "X"

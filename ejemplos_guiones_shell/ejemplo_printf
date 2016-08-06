@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Imprime texto formateado mediante la orden printf
+
+printf "Número: \t%05d\nCadena: \t%s\n" 12 Mensaje

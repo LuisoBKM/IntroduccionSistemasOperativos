@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in 10 30 70
+do
+     echo Mi número favorito es $i
+     # ($i valdría 10 en la primera iteración, 30 en
+     # la segunda y 70 en la tercera)
+done
+

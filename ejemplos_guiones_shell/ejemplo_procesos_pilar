@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Esta última orden obtiene el identificador de todos los procesos
+# ejecutados por el usuario ``pilar'', y los muestra en una única línea:
+
+
+ps aux |grep ^pilar |tr -s " " |cut -f2 -d " " |tr "\n" " "
+

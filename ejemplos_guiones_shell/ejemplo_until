@@ -1,0 +1,9 @@
+#!/bin/bash
+# El siguiente también muestra todos los parámetros
+
+until [ -z $1 ]
+do
+     echo $1
+     shift
+done
+

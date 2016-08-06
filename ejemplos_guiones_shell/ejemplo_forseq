@@ -1,0 +1,6 @@
+for i in `seq 0 5 100`
+do
+    # $i va tomando todos los valores entre 0 y 100,
+    # a incrementos de 5 unidades
+    echo $i
+done

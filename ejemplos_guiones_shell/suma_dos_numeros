@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Este ejemplo lee dos números del teclado e imprime su suma, (usando
+# las órdenes read, print y let).
+
+printf "Introduzca un número \n"
+read numero1
+printf "Introduzca otro número \n"
+read numero2
+let respuesta=$numero1+$numero2
+printf "$numero1 + $numero2 = $respuesta \n"
+

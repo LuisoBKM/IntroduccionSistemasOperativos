@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Comprueba si el primer argumento es un número bien formado:
+
+if echo $1 | grep -x -q "[0-9]\+" 
+then
+     echo "El argumento $1 es realmente un número natural."
+else
+     echo "El argumento $1 no es un número natural correcto."
+fi

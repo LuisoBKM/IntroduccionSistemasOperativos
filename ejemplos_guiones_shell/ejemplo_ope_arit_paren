@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo Dos elevado a seis es:  $((2**6))
+
+echo El resultado de la suma 6+7  es $((6+7))
+
+echo El resto de la división 7/5 es: $((7%5))
+
+echo El valor es $((2#101|2#10))
+
+

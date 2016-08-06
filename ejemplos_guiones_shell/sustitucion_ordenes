@@ -1,0 +1,15 @@
+#!/bin/bash
+
+aux=`ls -lai`  # Ejecuta ls -lai y después lo asigna a aux
+echo Contenido de la variable aux:  $aux      # Muestra el contenido de aux
+echo -e "\n"
+fecha=$(date)  # Ejecuta date y almacena el valor en fecha
+echo Contenido de la variable fecha: $fecha    # Muestra el contenido de fecha
+
+echo -e "\n"
+var=`ls -al`  # Primero ejecuta y luego asigna el valor
+echo $var     # Muestra el valor de la variable
+
+echo -e "\n"
+echo `date`   # Primero se ejecuta date y luego echo
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if grep -q main prac.c
+then
+                echo encontrada la palabra clave main
+else
+                echo no encontrada la palabra clave main
+fi
+

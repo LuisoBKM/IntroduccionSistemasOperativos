@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# La siguiente orden cuenta cuantos ficheros hay en el directorio
+# actual:
+
+ls | wc -l

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Programa que copia un fichero en otro, controlando que el número de
+# argumento sea exactamente dos.
+
+if [ $# != 2 ]
+then
+    echo "utilice: copia [desde] [hasta]"
+    exit 1
+fi
+desde=$1
+hasta=$2
+if [ -f "$hasta" ]
+then
+    echo "$hasta ya existe, ¿ desea sobreescribirlo (s/n)?"
+    read respuesta
+if [ "$respuesta" != "s" ]
+then
+     echo "$desde no copiado"
+     exit 0
+fi
+fi
+
+cp $desde $hasta
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+# Muestra todos los parámetros, si encuentra una "f" finaliza
+while [ $# -gt 0 ]
+do
+      if [ $1 = "f" ]
+      then
+            break
+      fi
+      echo Parámetro: $1
+      shift
+done
+
+

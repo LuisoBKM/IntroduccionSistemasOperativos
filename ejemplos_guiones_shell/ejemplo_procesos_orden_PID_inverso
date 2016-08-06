@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Esta otra orden lista todos los procesos que se están ejecutando en el 
+# sistema en orden numérico inverso de su PID (segundo campo de la salida 
+# del ps aux:
+
+ps aux | sort -k 2 -n -r

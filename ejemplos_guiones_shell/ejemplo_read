@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -n "Introduzca un valor para var1: "
+read var1
+echo "var1 = $var1"

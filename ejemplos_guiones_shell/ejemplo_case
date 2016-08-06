@@ -1,0 +1,12 @@
+#!/bin/bash
+
+var=3
+case $var in
+  1)   echo La variable var es un uno 
+       ;;
+  2)   echo La variable var es un dos
+       ;;
+  *)   echo La variable var no es ni un uno ni un dos
+       ;;
+esac
+

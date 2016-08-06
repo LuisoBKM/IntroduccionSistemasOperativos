@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Escribir un guión shell que solicite confirmación si va a
+# sobrescribir un fichero cuando se use la orden cp.
+
+if [ -f $2 ]
+then
+       echo "$2 existe. ¿Quieres sobreescribirlo? (s/n)"
+       read sn
+       if [ $sn = "N" -o $sn = "n" ]
+       then
+              exit 0
+       fi
+fi
+cp $1 $2
+

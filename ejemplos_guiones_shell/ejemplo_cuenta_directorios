@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Esta orden muestra el número de directorios que hay en el directorio
+# actual:
+
+
+ls -l | grep ^d | wc -l
+

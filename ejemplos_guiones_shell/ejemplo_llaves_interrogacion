@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo El valor de var1 es ${var1}
+# No está definida, no imprimirá nada
+
+echo El valor de la variable es ${var1?"No está definida..."}
+# Al no estar definida, se muestra en pantalla el mensaje
+
+echo El valor es $var1
+# Su valor sigue siendo nulo, no se ha definido
+

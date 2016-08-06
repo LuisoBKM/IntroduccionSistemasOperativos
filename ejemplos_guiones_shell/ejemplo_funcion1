@@ -1,0 +1,17 @@
+#! /bin/bash
+
+# Se define la función salir
+function salir {
+       exit
+}
+
+# Se define la función hola
+function hola {
+       echo ¡Hola!
+}
+
+
+hola        # Se llama a la función hola
+salir       # Se llama a la función salir
+echo petete
+

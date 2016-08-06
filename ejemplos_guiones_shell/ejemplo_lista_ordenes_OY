@@ -1,0 +1,4 @@
+#!/bin/bash
+sleep 1 || echo Hola            # echo no saca nada en pantalla
+sleep 1 && echo Hola y adios    # echo muestra en pantalla Hola
+

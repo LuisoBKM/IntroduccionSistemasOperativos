@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Usando las órdenes who, sort, uniq y cut podemos saber qué usuarios
+# están trabajando en el sistema en este momento:
+
+who | tr -s " " | cut -f1 -d " "| sort | uniq
+

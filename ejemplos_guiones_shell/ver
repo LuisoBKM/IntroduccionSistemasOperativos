@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Escribir un guión shell llamado ver que para cada argumento que reciba
+# realice una de las siguientes operaciones:
+# 1) si es un directorio ha de listar los ficheros que contiene,
+# 2) si es un fichero regular lo tiene que mostrar por pantalla,
+# 3) en otro caso, que indique que no es ni un fichero ni un directorio.
+
+for fich in $*
+do
+     if [ -d $fich ]
+     then
+         echo "usando ls"
+         ls $fich
+     elif [ -f $fich ]
+     then
+         cat $fich
+     else
+         echo $fich no es ni un fichero ni un directorio
+     fi
+done
+

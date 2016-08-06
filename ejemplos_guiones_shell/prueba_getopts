@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Comprueba y procesa argumentos t y r (con parámetro adicional)
+# y flag m (sin parámetro adicional)
+
+while getopts t:r:m MYOPTION
+do
+    case $MYOPTION in
+      t) echo "El argumento para la opción -t es $OPTARG"
+         ;;
+      r) echo "El índice siguiente al argumento de -r es $OPTIND"
+         ;;
+      m) echo "El flag -m ha sido activado"
+         ;;
+      ?) echo "Lo siento, se ha intentado una opción no existente";
+         exit 1;
+         ;;
+    esac
+done

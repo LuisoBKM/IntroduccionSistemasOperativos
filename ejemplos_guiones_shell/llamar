@@ -1,0 +1,12 @@
+#!/bin/bash
+# llamar  muestra su número PID y después llama a un programa
+# num , a través de la orden (.). Cuando num termina su ejecución,
+# la orden (.)  devuelve el control al programa que lo llamó, el cual
+# muestra el mensaje.
+
+
+
+echo "$0 PID = $$"
+. num
+echo "se ejecuta esta línea"
+

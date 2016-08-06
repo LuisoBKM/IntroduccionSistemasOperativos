@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Programa que hace múltiples copias de ficheros a pares. En cada
+# iteración desaparecen el primer y segundo argumento.
+
+while test "$2" != ""
+do
+    echo $1 $2
+    cp $1 $2
+    shift; shift
+done
+if test "$1" != ""
+then
+    echo "$0: el número de argumentos debe ser par y > 2"
+fi
+

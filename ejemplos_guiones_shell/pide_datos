@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Ejemplo break y continue: este programa utiliza las órdenes
+# break y continue para permitir al usuario controlar la entrada de datos.
+
+while true        #bucle infinito
+do
+     echo "Introduce un dato "
+     read respuesta
+     case "$respuesta" in
+     "nada")  # no hay datos
+              break
+              ;;
+     "")  # si es un retorno de carro se continúa
+          continue
+          ;;
+     *)  # proceso de los datos
+         echo "se procesan los datos"
+         ;;
+     esac
+done

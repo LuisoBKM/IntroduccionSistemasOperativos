@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# La siguiente orden elimina todos los espacios en blanco del fichero
+# ``basura.txt'', lo guarda en otro fichero llamado
+# ``basura.sinblancos'', y lo muestra por pantalla:
+
+cat basura.txt | tr -s " " | tee basura.sinblancos
+

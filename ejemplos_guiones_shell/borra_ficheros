@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Programa que borra con confirmación todos los ficheros indicados como
+# argumentos en la línea de órdenes.
+
+while test "$1" != ""
+do
+    rm -i $1
+    shift
+done
+

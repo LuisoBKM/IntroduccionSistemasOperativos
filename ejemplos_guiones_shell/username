@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Escribir un guión shell que, dado el ``username'' de un usuario, nos
+# devuelva cuántas veces esa persona está conectada. (Usa: who, grep,
+# wc).
+
+if [ ! $# -eq 1 ]
+then
+  echo El número de parámetros no es correcto
+  exit
+fi
+veces=`who | grep $1 | wc -l`
+echo "$1 está conectado $veces veces"
+

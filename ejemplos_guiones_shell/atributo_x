@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Hacer un programa que ponga el atributo de ejecutable a los archivos
+# pasados como argumento.
+
+for fich in $@
+do
+     if test -f $fich
+     then
+          chmod u+x $fich
+     fi
+done
+

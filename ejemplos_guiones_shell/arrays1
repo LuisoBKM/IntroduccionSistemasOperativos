@@ -1,0 +1,12 @@
+#!/bin/bash
+aux=`ls`
+temp=(`ls`)
+echo -e El contenido de la variable aux es $aux "\n"
+
+# A continuación un ejemplo de lo que pasa al tratar una variable como
+# un array
+echo -e La variable aux tratada como un array : ${aux[0]} "\n"
+
+echo -e El contenido de temp es: ${temp[*]}  "\n"
+echo -e El contenido del tercer elemento de temp es: ${temp[2]} "\n"
+echo -e El contenido del primer elemento de temp es $temp "\n"

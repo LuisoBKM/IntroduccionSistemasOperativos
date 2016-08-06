@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mils="ls -l"  # Se crea una nueva variable
+
+mils          # No hace nada, buscará el ejecutable  mils, que no existe
+
+$mils         # Ejecutará la orden "ls -l"
+
+echo El contenido de la variables es: $mils
+# Muestra el contenido de la variable mils, i.e., "ls -l"
+
+unset mils #Eliminar el valor de la variable mils
+
+echo El contenido de la variables es: $mils
+# Ahora mils no tiene contenido

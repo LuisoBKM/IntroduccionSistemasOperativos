@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Supongamos que queremos cambiar el sufijo de todos los archivos *.tex
+# a .latex.  Haciendo mv *.tex *.latex no funciona, (¿por qué?), pero sí con
+# un guión shell.
+
+for f in *.tex
+do
+     nuevo=$(basename $f tex)latex
+     mv $f $nuevo
+done
+

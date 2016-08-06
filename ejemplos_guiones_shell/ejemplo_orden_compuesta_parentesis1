@@ -1,0 +1,3 @@
+#|/bin/bash
+( echo bb; echo ca; echo aa; echo a ) | sort
+

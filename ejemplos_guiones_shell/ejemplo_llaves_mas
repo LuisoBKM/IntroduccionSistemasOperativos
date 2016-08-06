@@ -1,0 +1,13 @@
+#!/bin/bash
+
+var1=4  # Le asigna el valor 4
+
+echo El valor de var1 es ${var1}
+# El valor mostrado será 4
+
+echo El valor de la variable es ${var1+5}
+# Al estar definida, se utiliza el valor 5
+
+echo El valor es $var1
+# Su valor sigue siendo 4
+

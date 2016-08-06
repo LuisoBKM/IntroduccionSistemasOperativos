@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Busca y sustituye en un listado todas las ocurrencias de un numero de entre
+# 3 y 5 dígitos por la cadena ``PRUEBA'':
+
+ls -l | sed -e "s/[0-9]\{3,5\}/PRUEBA/g"
+

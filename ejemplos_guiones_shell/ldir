@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Escribir un guión shell llamado ldir que liste los directorios
+# existentes en el directorio actual.
+
+for archivo in *
+do
+       test -d $archivo && ls $archivo
+done
+

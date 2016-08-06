@@ -1,0 +1,14 @@
+#!/bin/bash
+let a=6#10+1
+echo el valor de a es $a
+
+let a1=6+7
+echo El resultado de la suma es $a1
+
+let b=7%5
+echo El resto de la división es: $b
+
+let c=2#101\|2#10
+echo El valor de c es $c
+
+
