@@ -1,0 +1,27 @@
+#!/bin/bash -x
+if [ $# -eq 0 ]
+then
+	echo Debes introducir un numero
+	exit 1
+fi
+if ! echo $1 | grep -x -q "[0-9]\+" 
+then
+	echo Debes introducir un número
+	exit 1
+fi
+
+i=1
+char=$(echo -n $1 |  wc -c)
+
+while [ $i -ne $char -a $i -lt $char ]
+do
+	a=$(echo $1 | cut -c$char)
+	b=$(echo $1 | cut -c$i)
+	if [ $a -ne $b ]
+	then
+		exit 1
+	fi
+	let i=$i+1
+	let char=$char-1
+done
+

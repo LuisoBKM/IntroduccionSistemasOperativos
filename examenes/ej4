@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo Introduce ficheros como argumento
+	exit 1
+fi
+
+while test "$1" != ""
+do
+	a=$(cat $1 | sort -n | wc -l)
+	echo -e "Fichero\tMediana"
+	echo -n -e "$1\t"
+	let b=$(($a % 2))
+	if [ $b -eq 0 ]
+	then
+		let aux=$(($a/2))
+		uno=$(cat $1 | sort -n | tr -s "\n" " " | cut -f$aux -d " ")
+		dos=$(cat $1 | sort -n | tr -s "\n" " " | cut -f$(($aux+1)) -d " ")
+		echo $((($uno+$dos)/2))
+	else 
+		dos=$(cat $1 | sort -n | tr -s "\n" " " | cut -f$(($aux+1)) -d " ")
+		echo $dos
+	fi
+	shift
+done  

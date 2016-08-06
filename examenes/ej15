@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+	echo Introduce los ficheros
+	exit 1
+fi
+
+i=0
+cat $1 | while read a;do echo ${vector[*]} | grep -i -q "$a";if [ $? -ne 0 ];then b=$(cat $2 | grep -i -c $a);vector[i]=$a;let i=$i+1;echo -n "$a "; echo $b;fi;done|sort -k2

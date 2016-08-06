@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -le 0 ]
+then
+	echo Debe introducir un directorio
+fi
+	num_car=0
+while test "$1" != ""
+do
+	num_car=0
+	ey=$(find $1 -type f -printf "%f\n" | while read fich; do a=$(echo "$fich"|wc -m);if [ $a -gt $num_car ];then num_car=$a;echo $num_car;fi;done) 
+	num_car=$(echo $ey | tr -s " " "\n" | tail -1)
+	ficheros=$(find $1 -type f -printf "%f\n" | while read fich; do a=$(echo $fich | wc -m); if [ $a -eq $num_car ]; then  echo $fich;fi;done)
+	echo $ficheros | tr -s " " "\n" | while read fich;do find $1 -iname $fich -type f;done
+	echo
+	shift
+done
+

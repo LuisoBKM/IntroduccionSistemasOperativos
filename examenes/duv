@@ -1,0 +1,41 @@
+#! /bin/bash
+
+if [ \( ! -d "$1" \) -o \( $# -gt 1 \) ]
+then
+    echo "Uso: $0 directorio"
+    exit
+fi
+
+tamanyos=( `du $1/* --max-depth=0 | tr -s ' ' | cut -f1` )
+ficheros=( `du $1/* --max-depth=0 | tr -s ' ' | cut -f2` )
+
+contador=0
+sumatamanyos=0
+for var in ${tamanyos[*]}
+do
+  if [ -f ${ficheros[contador]} ]
+  then
+    sumatamanyos=$(( $sumatamanyos + $var ))
+  fi
+  contador=$(( $contador + 1 ))
+done
+
+contador=0
+while [ ${tamanyos[$contador]} ]
+do
+  if [ -f ${ficheros[$contador]} ]
+  then
+    nombrefichero=`basename ${ficheros[$contador]}"         " | cut -c1-9`
+    porcentaje=$(( 100*${tamanyos[$contador]}/$sumatamanyos ))
+    contador_asteriscos=0
+    cadena_asteriscos=""
+    numero_asteriscos=$(( $porcentaje*60/100 ))
+    while [ $contador_asteriscos -le $numero_asteriscos ]
+    do
+        cadena_asteriscos="*$cadena_asteriscos"
+        contador_asteriscos=$(( $contador_asteriscos+1 ))
+    done
+    echo "$nombrefichero $cadena_asteriscos ($porcentaje%)"
+  fi
+  contador=$(( $contador + 1 ))
+done

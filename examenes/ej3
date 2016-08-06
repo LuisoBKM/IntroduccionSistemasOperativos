@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo Debe introducir los ficheros
+	exit 1
+fi
+acum=0
+while test "$1" != ""
+do
+	if  test -f "$1" 
+	then
+		a=$(ls -l $1 | cut -f1 -d " ")
+		echo -n $a
+		let a=$(ls -l $1 | tr -s " " | cut -f5 -d " ")
+		let acum=$acum+$a
+		echo -n -e "\t$acum"
+		echo -e "\t" $1
+	fi
+	shift
+done

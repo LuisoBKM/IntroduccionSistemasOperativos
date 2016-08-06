@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tamanyo=$(du $1 -a -S | tr -s "\t" " " | cut -f1 -d " " | tail -1)
+
+tamanyo=$(find $1 -maxdepth 1 -type f -printf "%f\n" | while read fich;do a=$(du $1/$fich | tr -s "\t" " " | cut -f1 -d " ");echo $a;done)
+a=0
+b=$(echo $tamanyo | tr -s " " "\n" | while read line;do let a=$(($a+$line));echo $a;done)
+tam_total=$(echo $b | tr -s " " "\n" | tail -1)
+echo $tam_total
+i=0
+find $1 -maxdepth 1 -type f -printf "%f\n" | while read fich;do a=$(du $1/$fich | tr -s "\t" " " | cut -f1 -d " ");a=$(($a*100));a=$(($a/$tam_total));c=$(echo -n "$fich" | wc -c);if [ $c -gt 8 ]; then d=$(echo -n $fich | cut -c1-8);echo -n "$d ";else i=$c;echo -n "$fich ";while test "$i" != 8;do echo -n " ";let i=$i+1; done;fi;let char=$(($a*60));let char=$(($char/100));if [ $char -eq 0 ];then let char=1;fi;i=0;while test "$i" != "$char";do echo -n "*";let i=$i+1;done;  echo " $a%";done
+

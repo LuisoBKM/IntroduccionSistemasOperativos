@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "" > num
+if [ $# -eq 0 ]
+then
+	echo Debe introducir directorios
+	exit 1
+fi
+
+while test "$1" != ""
+do
+	total=0
+	sol=$(find $1 -type f | while read fichero; do cat $fichero | (while read line; do char=$(echo -n $line | wc -c);if [ $char -gt $total ];then total=$char;echo -n "$total:";fi;done) | sort -n ;echo "$fichero@.";done) 
+	b=$(echo $sol | tr -s "." "\n" | tr -s ":" " " | while read a; do echo $a | tr -s " " "\n"  | tail -2 ;echo;done)
+	echo $b | tr -s "@" "\n" >> num
+#	echo $b
+#	echo $lineas
+	shift
+done
+	cat num | sort -k1 -r | while read line; do echo $line | cut -f2 -d " ";done
+#rm num

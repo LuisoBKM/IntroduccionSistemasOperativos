@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo Debe introducir el fichero de texto
+	exit 1
+fi
+
+cat $1 | while read fich; do echo $fich | tr -s " " "\n"| tr -d ".;," | tr "[A-Z]" "[a-z]" | sort | uniq | tr -s "\n" " ";echo  ; done

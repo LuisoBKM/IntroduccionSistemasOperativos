@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -le 0 ]
+then
+	echo "Debe introducir los directorios"
+fi
+
+total=$(while test "$1" != ""
+do
+	tam=0
+	char=$(find $1 -type f | while read fich; do cat $fich | while read line;do a=$(echo -n $line | wc -c);if [ $a -gt $tam ];then tam=$a;echo -n ":$tam";fi;done;echo " $fich@.";done)	
+	echo $char | tr "." "\n" | while read linea; do echo $linea | tr ":" "\n" | tail -1;done
+	shift 
+done);
+echo $total | tr "@" "\n" | sort -n -k1 | while read line; do echo $line | cut -f1 -d " " | grep -x -q "[0-9]\+";if [ $? -eq 0 ]; then echo $line | cut -f2 -d " ";else echo $line | cut -f1 -d " ";fi;done 

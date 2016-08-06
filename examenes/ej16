@@ -1,0 +1,26 @@
+#!/bin/bash
+i=1
+while test $i != "16" 
+do
+	if [ $i -gt 9 ]
+	then
+		echo -n "$i.- "
+	else
+		echo -n " $i.- "
+	fi
+
+	let a=$RANDOM%3
+	let a=$a+1
+	if [ $a -eq 2 ]
+	then
+		echo -n "  "
+		echo 2
+	elif [ $a -eq 3 ]
+	then
+		echo -n " "
+		echo x
+	else 
+		echo 1
+	fi	
+	let i=$i+1
+done

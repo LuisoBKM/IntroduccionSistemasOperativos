@@ -1,0 +1,27 @@
+#!/bin/bash
+if ! echo $1 | grep -x -q "[0-9]\+" 
+then
+	echo Introduce un pid
+	exit 1
+fi
+
+a=$(ps -l $1 | wc -l)
+
+if [ $a -le 1 ]
+then
+	echo Debe introducir un PID válido
+	exit 2
+fi
+
+echo -n "PID $1"
+b=$1
+while true
+do
+	b=$(ps -l $b | tr -s " " | cut -f5 -d " " | tail -1)
+	echo -n "-->$b"
+	if [ $b -eq 0 ]
+	then
+		break
+	fi
+done
+echo
