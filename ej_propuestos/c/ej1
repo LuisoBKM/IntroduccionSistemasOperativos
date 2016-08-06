@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -le 1 ]
+then
+	echo Debe haber mas de un argumento
+	exit 0
+fi
+
+echo El primer argumento es "$1"
+x=1
+y=$#
+while test "$1" != ""
+do
+	if [ $x -eq $y ]
+	then
+		echo El ultimo argumento es "$1"
+	fi
+	let x=$x+1
+	shift
+done
