@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ $# -le 0 ]
+then
+	echo Debes introducir un número1
+	exit 1
+fi
+if echo $1 | grep -x -q "[0-9]\+" 
+then
+		if [ $1 -le 10 -a $1 -ge 0 ]
+		then
+			echo "		TABLA DE MULTIPLICAR DEL $1		"
+			echo "		============================	"
+			echo "			$1 * 1 = $1				"
+			let resul=$1*2
+			echo "			$1 * 2 = $resul 		"
+		else
+			echo El número debe ser entre 0 y 10
+		fi
+else
+	echo Debes introducir un número
+fi
