@@ -1,1 +1,2 @@
 # IntroduccionSistemasOperativos
+Guiones Shell.
